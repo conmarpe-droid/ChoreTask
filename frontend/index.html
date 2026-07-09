@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HogarSync - Mi Libreta</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              900: '#1e3a8a',
+            },
+            paper: '#fdf8f5', /* Warmer, more personal paper color */
+            graphite: '#475569' /* Softer pencil color instead of harsh dark gray */
+          },
+          fontFamily: {
+            sans: ['Kalam', 'cursive', 'sans-serif'],
+            handwriting: ['Kalam', 'cursive', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    
+    /* Personal Notebook aesthetic - Bullet Journal Style */
+    body {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      background-color: #fdf8f5;
+      /* Soft dot grid like a bullet journal */
+      background-image: radial-gradient(#d7ccc8 1.5px, transparent 1.5px);
+      background-size: 24px 24px;
+      background-position: 0 0;
+      color: #475569;
+      overflow-x: hidden;
+    }
+    
+    /* Top Rings - Solid background to hide scrolling text */
+    .notebook-rings {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 55px;
+      background-color: #fdf8f5; /* Solid paper color to mask text */
+      /* SVG pattern for spiral rings and holes shifted down */
+      background-image: url("data:image/svg+xml,%3Csvg width='48' height='55' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='24' cy='35' r='6' fill='%23e7e5e4' stroke='%23d6d3d1' stroke-width='1'/%3E%3Cpath d='M20 5 L20 35 A4 4 0 0 0 28 35 L28 5' fill='none' stroke='%2394a3b8' stroke-width='3' stroke-linecap='round'/%3E%3Cpath d='M22 5 L22 35 A2 2 0 0 0 26 35 L26 5' fill='none' stroke='%23f1f5f9' stroke-width='1'/%3E%3C/svg%3E");
+      background-repeat: repeat-x;
+      z-index: 50;
+      border-bottom: 2px solid rgba(71, 85, 105, 0.1); /* Subtle edge of the binding */
+      box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+    }
+
+    /* Hand-drawn styles - Softer for personal feel */
+    .hand-drawn {
+      border: 2px solid #64748b;
+      border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+      box-shadow: 2px 3px 0px rgba(100, 116, 139, 0.2);
+      background-color: #fff;
+    }
+    
+    .hand-drawn-sm {
+      border: 2px solid #64748b;
+      border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    }
+
+    .hand-drawn-btn {
+      border: 2px solid #64748b;
+      border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+      box-shadow: 2px 3px 0px rgba(100, 116, 139, 0.2);
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    
+    .hand-drawn-btn:hover:not(:disabled) {
+      transform: translate(-1px, -1px);
+      box-shadow: 3px 4px 0px rgba(100, 116, 139, 0.3);
+    }
+    
+    .hand-drawn-btn:active:not(:disabled) {
+      transform: translate(1px, 1px);
+      box-shadow: 1px 1px 0px rgba(100, 116, 139, 0.2);
+    }
+
+    .hand-drawn-tab {
+      border: 2px solid transparent;
+      border-bottom: 2px solid #64748b;
+      border-radius: 15px 15px 0 0;
+      transition: all 0.2s ease;
+    }
+    .hand-drawn-tab.active {
+      border: 2px solid #64748b;
+      border-bottom: 2px solid transparent;
+      background-color: #fff;
+      border-radius: 255px 15px 0 0/15px 225px 0 0;
+    }
+
+    #root {
+      position: relative;
+      z-index: 10;
+      padding-top: 75px; /* Ensures content starts BELOW the solid rings header */
+      min-height: 100vh;
+    }
+  </style>
+  </head>
+<body>
+  <div class="notebook-rings"></div>
+  <div id="root"></div>
+  <script type="module" src="./index.tsx"></script>
+<script type="module" src="/index.js"></script></body>
+</html>
